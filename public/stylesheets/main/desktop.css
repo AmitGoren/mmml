@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@200,300;400&display=swap');
+@viewport {
+  width: device-width ;
+  zoom: 1.0 ;
+}
+
+:root {
+  --black: #1A1A1D;
+  --gray: #4E4E50;
+  --dim: #6F2232;
+  --lead1: #950740;
+  --lead2: #C3073F;
+  --white: #FFFFFF;
+}
+
+body {
+  padding: 0;
+
+  font-family: 'Roboto', sans-serif;
+
+  color: var(--gray);
+  background: url(/images/noisy-texture.png) center top repeat;
+  background-attachment: fixed;
+}
+
+header.page {
+  padding: 82pt;
+
+  height: 100vh;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+header.page.pink {
+  height: 40vh;
+
+  background-color: var(--lead2);
+  color: var(--white);
+}
+
+div.pagecenter {
+  padding-top: 30vh;
+}
+
+div.pagecenter.half {
+  padding-top: 8vh;
+}
+
+h1 {
+  margin: 10pt;
+  font-size: 48pt;
+  font-weight: 200;
+
+  color: var(--white);
+}
+
+h2 {
+  font-size: 32pt;
+  font-weight: 300;
+
+  color: var(--white);
+}
+
+a {
+  color: var(--lead2);
+}
+
+p.smalltext {
+
+}
+
+p.subtitle {
+  margin-top: 0pt;
+
+  font-size: 18pt;
+  font-weight: 300;
+
+  color: var(--white);
+}
+
+a.button-important {
+  display: inline-block;
+
+  margin: 32pt;
+  margin-bottom: 16pt;
+  padding: 8pt 48pt;
+
+  border: 2pt solid var(--lead2);
+  border-radius: 30pt;
+
+  color: var(--white);
+
+  text-decoration: none;
+  font-size: 18pt;
+  font-weight: 300;
+
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
+a.button-important:hover {
+  background-color: var(--lead2);
+}
+
+.image {
+  max-height: 500px;
+  max-width: 40%;
+  width: auto;
+  height: auto;
+}

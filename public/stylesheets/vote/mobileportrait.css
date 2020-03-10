@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@200,300;400&display=swap');
+@viewport {
+  width: device-width ;
+  zoom: 1.0 ;
+}
+
+:root {
+  --black: #1A1A1D;
+  --gray: #4E4E50;
+  --dim: #6F2232;
+  --lead1: #950740;
+  --lead2: #C3073F;
+  --white: #FFFFFF;
+}
+
+body {
+  padding: 0;
+
+  font-family: 'Roboto', sans-serif;
+
+  color: var(--gray);
+  background: url(/images/noisy-texture.png) center top repeat;
+  background-attachment: fixed;
+}
+
+header.page {
+  padding: 16pt;
+
+  height: 100vh;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+header.page.pink {
+  height: 40vh;
+
+  background-color: var(--lead2);
+  color: var(--white);
+}
+
+div.pagecenter {
+  padding-top: 30vh;
+}
+
+div.pagecenter.half {
+  padding-top: 4vh;
+}
+
+h1 {
+  margin: 10pt;
+  font-size: 24pt;
+  font-weight: 300;
+
+  color: var(--white);
+}
+
+h2 {
+  font-size: 24pt;
+  font-weight: 300;
+
+  color: var(--white);
+}
+
+a {
+  color: var(--lead2);
+}
+
+p {
+  font-size: 11.5pt;
+}
+
+p.smalltext {
+  font-size: 11pt;
+}
+
+p.subtitle {
+  margin-top: 0pt;
+
+  font-size: 16pt;
+  font-weight: 300;
+
+  color: var(--white);
+}
+
+a.button-important {
+  display: inline-block;
+
+  margin: 24pt;
+  margin-bottom: 20pt;
+  padding: 8pt 48pt;
+
+  border: 2pt solid var(--lead2);
+  border-radius: 30pt;
+
+  color: var(--white);
+
+  text-decoration: none;
+  font-size: 14pt;
+  font-weight: 300;
+
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
+.image {
+  max-height: 500px;
+  max-width: 40%;
+  width: auto;
+  height: auto;
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AIUCDataGen</title>
+      <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="/stylesheets/main/mobileportrait.css">
+      <link rel="stylesheet" type="text/css" media="screen and (min-width: 451px) and (max-width:812px)" href="/stylesheets/main/mobilelandscape.css">
+      <link rel="stylesheet" type="text/css" media="screen and (min-width: 813px)" href="/stylesheets/main/desktop.css">
+      <meta http-equiv="Content-Security-Policy" content="child-src 'self' https://m.imgur.com/a/ https://i.redd.it">
+  </head>
+  <body>
+    <center><h1>AIUCDataGen</h1></center>
+    <span style="float:left; width:45%">
+      <b>ID: </b><%= id_0 %>
+      <b>Link: </b><a href="<%= link_0 %>"><%= link_0 %></a> <br>
+      <img class="image" src="<%= img_0 %>"></img>
+      <b><a href="<%= img_0 %>">View image</a></b>a <br>
+    </span>
+    <span style="float:right; width:45%">
+      <b>ID: </b><%= id_1 %>
+      <b>Link: </b><a href="<%= link_1 %>"><%= link_1 %></a> <br>
+      <img class="image" src="<%= img_1 %>"> <br>
+      <b><a href="<%= img_1 %>">View image</a></b>
+    </span>
+     <button onclick="send('left')">Left</button>
+     <button onclick="send('skip')">Natrual/skip</button>
+     <button onclick="send('right')">Right</button>
+    <script src="/javascripts/vote.js"></script>
+  </body>
+</html>
