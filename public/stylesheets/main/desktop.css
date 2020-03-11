@@ -46,6 +46,10 @@ div.pagecenter.half {
   padding-top: 8vh;
 }
 
+div.pagebottom {
+  padding-top: 36vh;
+}
+
 h1 {
   margin: 10pt;
   font-size: 48pt;
@@ -107,4 +111,8 @@ a.button-important:hover {
   max-width: 40%;
   width: auto;
   height: auto;
+}
+
+img.icon {
+  width: 3vh;
 }

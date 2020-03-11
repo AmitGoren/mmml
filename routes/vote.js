@@ -59,8 +59,6 @@ router.get('/', function(req, res, next) {
       if (err)
         throw err;
 
-      console.log(pic);
-
       if (req.query.l < req.query.r) {
         c.picture_0 = pic[0];
         c.picture_1 = pic[1];
