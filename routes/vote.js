@@ -1,70 +1,84 @@
-var fs = require('fs');
-
-var express = require('express');
-var url = require('url');
-
-var snoowrap = require('snoowrap')
+const express = require('express');
+const mysql = require('mysql');
 
 var router = express.Router();
 
-let rawconf = fs.readFileSync('conf.json');
-let rawposts = fs.readFileSync('posts.0');
+const config = require('../config.json');
 
-var conf = JSON.parse(rawconf);
+var con = mysql.createConnection(config.database);
 
-var r = new snoowrap({
-  userAgent: '0',
-  clientId: conf.client_id,
-  clientSecret: conf.client_secret,
-  username: conf.username,
-  password: conf.password
+// Connect to the database
+con.connect((err) => {
+  if (err)
+    throw err;
+
+  console.log("Connected to database");
 });
 
-// Parse a list of all of the posts specified
-var posts = rawposts.toString().replace(/\0/g, '').split('\n');
+function getRandomPicture() {
+  var q = "SELECT id, filename, age, sex FROM pictures WHERE id IN (SELECT id FROM (SELECT id FROM \
+    pictures ORDER BY RAND() LIMIT 1) t);";
+  return new Promise((resolve, reject) => {
+    con.query(q, (err, res) => {
+      if(err)
+        reject(err);
 
-function getImage(url, body) {
-  var urlSuffix = url.substr(url.length - 3);
-  if (urlSuffix === "jpg" || urlSuffix === "png" || url.includes("imgur")) {
-    return url;
-  }
-
-  var bodyWords = body.split(/[\s\n()]+/);
-  var url = "";
-  bodyWords.forEach((w) => {
-      if (w.includes("imgur")) {
-        console.log(w);
-        url = w;
-      }
+      resolve(res[0]);
     });
-  return url;
+  });
+}
+
+// Returns a different picture from the same sex and age as the picture given
+function getComparablePicture(picture) {
+  // Calculate the age range
+  var ln = Math.log(picture.age);
+  var min_age = Math.exp(ln / config.age_deviation);
+  var max_age = Math.exp(config.age_deviation * ln);
+
+  var q = "SELECT id, filename, age, sex FROM pictures WHERE "
+          + Math.round(min_age) + " < age AND age < " + Math.round(max_age)
+          + " AND sex = " + picture.sex + " AND NOT id = " + picture.id
+          + " ORDER BY RAND() LIMIT 1;";
+  return new Promise((resolve, reject) => {
+    con.query(q, (err, res) => {
+      if (err)
+        reject(err);
+
+      resolve(res[0]);
+    });
+  });
 }
 
 router.get('/', function(req, res, next) {
-  // Redirect to use random posts if not specified
   if (req.query.l && req.query.r) {
     var c = new Object();
 
-    c.id_0 = req.query.l;
-    c.id_1 = req.query.r;
+    const q = "SELECT id, filename FROM pictures WHERE id IN (" + req.query.l
+              + "," + req.query.r + ");";
+    con.query(q, (err, pic) => {
+      if (err)
+        throw err;
 
-    Promise.all([r.getSubmission(c.id_0).url,
-                 r.getSubmission(c.id_1).url,
-                 r.getSubmission(c.id_0).selftext,
-                 r.getSubmission(c.id_1).selftext]).then((v) => {
-        c.link_0 = v[0];
-        c.link_1 = v[1];
+      console.log(pic);
 
-        c.img_0 = getImage(v[0].toString(), v[2].toString());
-        c.img_1 = getImage(v[1].toString(), v[3].toString());
-        fs.appendFileSync('images.0', c.img_0 + "\n" + c.img_1 + "\n");
-        res.render('vote', c);
-      });
+      if (req.query.l < req.query.r) {
+        c.picture_0 = pic[0];
+        c.picture_1 = pic[1];
+      }
+      else {
+        c.picture_0 = pic[1];
+        c.picture_1 = pic[0];
+      }
+
+      res.render('vote', c);
+    });
   } else {
-    var id0 = posts[Math.floor(Math.random() * posts.length)];
-    var id1 = posts[Math.floor(Math.random() * posts.length)];
-    console.log("Redirecting to " + "/vote?l=" + id0 + "&r=" + id1);
-    res.redirect("/vote?l=" + id0 + "&r=" + id1);
+    // Redirect to use random pictures
+    getRandomPicture().then((picture_0) => {
+      getComparablePicture(picture_0).then((picture_1) => {
+        res.redirect("/vote?l=" + picture_0.id + "&r=" + picture_1.id);
+      });
+    });
   }
 });
 

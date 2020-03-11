@@ -10,16 +10,12 @@
   <body>
     <center><h1>AIUCDataGen</h1></center>
     <span style="float:left; width:45%">
-      <b>ID: </b><%= id_0 %>
-      <b>Link: </b><a href="<%= link_0 %>"><%= link_0 %></a> <br>
-      <img class="image" src="<%= img_0 %>"></img>
-      <b><a href="<%= img_0 %>">View image</a></b>a <br>
+      <b>ID: </b><%= picture_0.id %>
+      <img class="image" src="/img/<%= picture_0.filename %>"></img>
     </span>
     <span style="float:right; width:45%">
-      <b>ID: </b><%= id_1 %>
-      <b>Link: </b><a href="<%= link_1 %>"><%= link_1 %></a> <br>
-      <img class="image" src="<%= img_1 %>"> <br>
-      <b><a href="<%= img_1 %>">View image</a></b>
+      <b>ID: </b><%= picture_1.id %>
+      <img class="image" src="/img/<%= picture_1.filename %>">
     </span>
      <button onclick="send('left')">Left</button>
      <button onclick="send('skip')">Natrual/skip</button>

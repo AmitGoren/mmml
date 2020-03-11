@@ -8,6 +8,8 @@ var indexRouter = require('./routes/index');
 var voteRouter = require('./routes/vote');
 var preferRouter = require('./routes/prefer');
 
+var config = require('./config.json');
+
 var app = express();
 
 // view engine setup
@@ -19,6 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/img', express.static(config.pictures_dir));
 
 app.use('/', indexRouter);
 app.use('/vote/', voteRouter);
