@@ -50,16 +50,16 @@ function getComparablePicture(picture) {
 }
 
 router.get('/', function(req, res, next) {
-  if (req.query.l && req.query.r) {
+  if (req.query.picture_0 && req.query.picture_0) {
     var c = new Object();
 
-    const q = "SELECT id, filename FROM pictures WHERE id IN (" + req.query.l
-              + "," + req.query.r + ");";
+    const q = "SELECT id, filename FROM pictures WHERE id IN (" + req.query.picture_0
+              + "," + req.query.picture_1 + ");";
     con.query(q, (err, pic) => {
       if (err)
         throw err;
 
-      if (req.query.l < req.query.r) {
+      if (req.query.picture_0 < req.query.picture_1) {
         c.picture_0 = pic[0];
         c.picture_1 = pic[1];
       }
@@ -74,7 +74,7 @@ router.get('/', function(req, res, next) {
     // Redirect to use random pictures
     getRandomPicture().then((picture_0) => {
       getComparablePicture(picture_0).then((picture_1) => {
-        res.redirect("/vote?l=" + picture_0.id + "&r=" + picture_1.id);
+        res.redirect("/vote?picture_0=" + picture_0.id + "&picture_1=" + picture_1.id);
       });
     });
   }
