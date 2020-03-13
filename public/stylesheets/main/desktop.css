@@ -106,13 +106,6 @@ a.button-important:hover {
   background-color: var(--lead2);
 }
 
-.image {
-  max-height: 500px;
-  max-width: 40%;
-  width: auto;
-  height: auto;
-}
-
 img.icon {
   width: 3vh;
 }

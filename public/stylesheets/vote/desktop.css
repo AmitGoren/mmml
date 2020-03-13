@@ -23,29 +23,6 @@ body {
   background-attachment: fixed;
 }
 
-header.page {
-  padding: 82pt;
-
-  height: 100vh;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-header.page.pink {
-  height: 40vh;
-
-  background-color: var(--lead2);
-  color: var(--white);
-}
-
-div.pagecenter {
-  padding-top: 30vh;
-}
-
-div.pagecenter.half {
-  padding-top: 8vh;
-}
-
 h1 {
   margin: 10pt;
   font-size: 48pt;
@@ -65,20 +42,32 @@ a {
   color: var(--lead2);
 }
 
-p.smalltext {
+img.picture {
+  max-height: 500px;
+  width: auto;
+  height: auto;
 
+  cursor: pointer;
+
+  border-radius: 2pt;
+
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
 }
 
-p.subtitle {
-  margin-top: 0pt;
-
-  font-size: 18pt;
-  font-weight: 300;
-
-  color: var(--white);
+img.picture:hover {
+  filter: brightness(140%);
 }
 
-a.button-important {
+img.icon {
+  width: 3vh;
+}
+
+span {
+  width: 48%;
+}
+
+button.button-important {
   display: inline-block;
 
   margin: 32pt;
@@ -89,6 +78,7 @@ a.button-important {
   border-radius: 30pt;
 
   color: var(--white);
+  background-color: var(--black);
 
   text-decoration: none;
   font-size: 18pt;
@@ -98,13 +88,6 @@ a.button-important {
   transition-duration: 0.4s;
 }
 
-a.button-important:hover {
+button.button-important:hover {
   background-color: var(--lead2);
-}
-
-.image {
-  max-height: 500px;
-  max-width: 40%;
-  width: auto;
-  height: auto;
 }

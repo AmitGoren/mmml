@@ -2,24 +2,23 @@
 <html>
   <head>
     <title>AIUCDataGen</title>
-      <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="/stylesheets/main/mobileportrait.css">
-      <link rel="stylesheet" type="text/css" media="screen and (min-width: 451px) and (max-width:812px)" href="/stylesheets/main/mobilelandscape.css">
-      <link rel="stylesheet" type="text/css" media="screen and (min-width: 813px)" href="/stylesheets/main/desktop.css">
-      <meta http-equiv="Content-Security-Policy" content="child-src 'self' https://m.imgur.com/a/ https://i.redd.it">
+      <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="/stylesheets/vote/mobileportrait.css">
+      <link rel="stylesheet" type="text/css" media="screen and (min-width: 451px) and (max-width:812px)" href="/stylesheets/vote/mobilelandscape.css">
+      <link rel="stylesheet" type="text/css" media="screen and (min-width: 813px)" href="/stylesheets/vote/desktop.css">
   </head>
   <body>
-    <center><h1>AIUCDataGen</h1></center>
-    <span style="float:left; width:45%">
-      <b>ID: </b><%= picture_0.id %>
-      <img class="image" src="/img/<%= picture_0.filename %>"></img>
-    </span>
-    <span style="float:right; width:45%">
-      <b>ID: </b><%= picture_1.id %>
-      <img class="image" src="/img/<%= picture_1.filename %>">
-    </span>
-     <button onclick="send('left')">Left</button>
-     <button onclick="send('skip')">Natrual/skip</button>
-     <button onclick="send('right')">Right</button>
-    <script src="/javascripts/vote.js"></script>
+    <center>
+      <h2>Just choose the prettier one</h2>
+      <span style="float:left">
+        <img style="float:right" class="picture" src="/pictures/<%= picture_0.filename %>" onclick="send(1)"></img>
+      </span>
+      <span style="float:right">
+        <img style="float:left" class="picture" src="/pictures/<%= picture_1.filename %>" onclick="send(2)"></img>
+      </span>
+      <button class="button-important" onclick="send(1)">Left</button>
+      <button class="button-important" onclick="send(0)">Natrual</button>
+      <button class="button-important" onclick="send(2)">Right</button>
+      <script src="/javascripts/vote.js"></script>
+    </center>
   </body>
 </html>

@@ -102,7 +102,7 @@ a.button-important {
   transition-duration: 0.4s;
 }
 
-.image {
+img.picture {
   max-height: 500px;
   max-width: 40%;
   width: auto;
