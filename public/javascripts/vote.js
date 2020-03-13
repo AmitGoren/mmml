@@ -1,5 +1,5 @@
 const queryString = window.location.search;
 
-function send(preference) {
+function vote(preference) {
   window.location.replace("/prefer"+ queryString + "&preference=" + preference);
 }

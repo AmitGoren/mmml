@@ -10,14 +10,14 @@
     <center>
       <h2>Just choose the prettier one</h2>
       <span style="float:left">
-        <img style="float:right" class="picture" src="/pictures/<%= picture_0.filename %>" onclick="send(1)"></img>
+        <img style="float:right" class="picture" src="/pictures/<%= picture_0.filename %>" onclick="vote(1)"></img>
       </span>
       <span style="float:right">
-        <img style="float:left" class="picture" src="/pictures/<%= picture_1.filename %>" onclick="send(2)"></img>
+        <img style="float:left" class="picture" src="/pictures/<%= picture_1.filename %>" onclick="vote(2)"></img>
       </span>
-      <button class="button-important" onclick="send(1)">Left</button>
-      <button class="button-important" onclick="send(0)">Natrual</button>
-      <button class="button-important" onclick="send(2)">Right</button>
+      <button class="button-important" onclick="vote(1)">Left</button>
+      <button class="button-important" onclick="vote(0)">Natrual</button>
+      <button class="button-important" onclick="vote(2)">Right</button>
       <script src="/javascripts/vote.js"></script>
     </center>
   </body>
