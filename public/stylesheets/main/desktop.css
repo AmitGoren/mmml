@@ -82,7 +82,7 @@ p.subtitle {
   color: var(--white);
 }
 
-a.button-important {
+.button-important {
   display: inline-block;
 
   margin: 32pt;
@@ -93,17 +93,28 @@ a.button-important {
   border-radius: 30pt;
 
   color: var(--white);
+  background-color: var(--black);
 
   text-decoration: none;
   font-size: 18pt;
   font-weight: 300;
 
+  cursor: pointer;
+
   -webkit-transition-duration: 0.4s;
   transition-duration: 0.4s;
 }
 
-a.button-important:hover {
+.button-important:hover {
   background-color: var(--lead2);
+}
+
+.button-important:hover {
+  background-color: var(--lead2);
+}
+
+input[type="file"] {
+    display: none;
 }
 
 img.icon {

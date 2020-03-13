@@ -7,6 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var voteRouter = require('./routes/vote');
 var preferRouter = require('./routes/prefer');
+var uploadRouter = require('./routes/upload');
 
 var config = require('./config.json');
 
@@ -26,6 +27,7 @@ app.use('/pictures/', express.static(config.pictures_dir));
 app.use('/', indexRouter);
 app.use('/vote/', voteRouter);
 app.use('/prefer/', preferRouter);
+app.use('/upload/', uploadRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

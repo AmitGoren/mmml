@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AIUCDataGen</title>
+      <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="/stylesheets/main/mobileportrait.css">
+      <link rel="stylesheet" type="text/css" media="screen and (min-width: 451px) and (max-width:812px)" href="/stylesheets/main/mobilelandscape.css">
+      <link rel="stylesheet" type="text/css" media="screen and (min-width: 813px)" href="/stylesheets/main/desktop.css">
+      <script src="/javascripts/uploading.js"></script>
+  </head>
+  <body>
+    <center>
+      <div class="pagecenter">
+        <h1>Ready to upload?</h1>
+        <form id="upload_form" action="/u" method="POST">
+          <label id="upload_label" for="upload" class="button-important" style="margin-bottom: 12pt">Upload</label>
+          <input id="upload" name="img" type="file"></input>
+          <br>
+          <div id="submit_group" style="display: none">
+            <input id="submit" type="submit" class="button-important" value="Submit" style="margin-top: 12pt"></input>
+          </div>
+        </form>
+      </div>
+    </center>
+  </body>
+</html>
