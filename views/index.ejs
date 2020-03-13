@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="/stylesheets/main/mobileportrait.css">
     <link rel="stylesheet" type="text/css" media="screen and (min-width: 451px) and (max-width:812px)" href="/stylesheets/main/mobilelandscape.css">
     <link rel="stylesheet" type="text/css" media="screen and (min-width: 813px)" href="/stylesheets/main/desktop.css">
+    <script src="https://unpkg.com/scroll-into-view-if-needed/umd/scroll-into-view-if-needed.min.js"></script>
   </head>
   <body>
     <center>
@@ -16,10 +17,12 @@
           <p class="subtitle">(Just choose the prettier one)</p>
         </div>
         <div class="pagebottom">
-          <img class="icon" src="images/chevron-down.svg" alt="">
+          <img style="cursor: pointer"
+          onclick="scrollIntoView(document.getElementById('page_2'), { behaviow: 'smooth' });"
+          class="icon" src="images/chevron-down.svg" alt=""></img>
         </div>
       </header>
-      <header class="page pink">
+      <header id="page_2" class="page pink">
         <div class="pagecenter half">
           <h2>Why?</h2>
           <p>This website collects data about people's faces.<br>This data will
