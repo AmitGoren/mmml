@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var voteRouter = require('./routes/vote');
 var preferRouter = require('./routes/prefer');
 var uploadRouter = require('./routes/upload');
+var uploadingRouter = require('./routes/uploading.js');
 
 var config = require('./config.json');
 
@@ -22,12 +23,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/pictures/', express.static(config.pictures_dir));
+app.use('/i/', express.static(config.dir.pictures));
 
 app.use('/', indexRouter);
 app.use('/vote/', voteRouter);
-app.use('/prefer/', preferRouter);
 app.use('/upload/', uploadRouter);
+app.use('/p/', preferRouter);
+app.use('/u/', uploadingRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
