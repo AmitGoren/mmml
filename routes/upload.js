@@ -4,7 +4,7 @@ const mysql = require('mysql');
 var router = express.Router();
 
 router.get('/', function(req, res, next) {
-  res.render('upload', {});
+  res.render('upload', { });
 });
 
 module.exports = router;
