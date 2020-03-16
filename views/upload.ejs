@@ -11,13 +11,14 @@
     <center>
       <div class="pagecenter">
         <h1>Ready to upload?</h1>
-        <form id="upload_form" action="/u" method="POST">
-          <label id="upload_label" for="upload" class="button-important" style="margin-bottom: 12pt">Upload</label>
-          <input id="upload" name="img" type="file"></input>
-          <br>
+        <p class="subtitle">Now you can upload a picture of yourself, then you can see how other people rate you!</p>
+        <form id="upload_form" action="/u" method="POST" enctype="multipart/form-data">
+          <label id="upload_label" for="upload" class="button-important" style="margin: 0pt">Upload</label>
+          <input id="upload" name="i" type="file"></input>
           <div id="submit_group" style="display: none">
-            <input id="submit" type="submit" class="button-important" value="Submit" style="margin-top: 12pt"></input>
+            <input id="submit" type="submit" class="button-important" value="Submit" style="margin: 0pt"></input>
           </div>
+          <p id="message" style="color: var(--lead2)"><%= typeof msg != 'undefined' ? msg : '' %></p>
         </form>
       </div>
     </center>
