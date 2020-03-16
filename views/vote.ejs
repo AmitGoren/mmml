@@ -7,14 +7,14 @@
     <link rel="stylesheet" type="text/css" media="screen and (min-width: 813px)" href="/stylesheets/vote/desktop.css">
     <script src="/javascripts/voting.js"></script>
   </head>
-  <body>
+  <body style="padding: 5vh">
     <center>
-      <h2>Just choose the prettier one</h2>
+      <h2>Who is prettier?</h2>
       <span style="float:left">
-        <img style="float:right" class="picture" src="/pictures/<%= picture_0.filename %>" onclick="vote(1)"></img>
+        <img style="float:right" class="picture" src="/i/<%= picture_0.filename %>" onclick="vote(1)"></img>
       </span>
       <span style="float:right">
-        <img style="float:left" class="picture" src="/pictures/<%= picture_1.filename %>" onclick="vote(2)"></img>
+        <img style="float:left" class="picture" src="/i/<%= picture_1.filename %>" onclick="vote(2)"></img>
       </span>
       <button class="button-important" onclick="vote(1)">Left</button>
       <button class="button-important" onclick="vote(0)">Natrual</button>
