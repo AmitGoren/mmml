@@ -1,0 +1,22 @@
+{
+  "database": {
+    "host": "my_database_address",
+    "user": "my_mysql_user",
+    "password": "my_mysql_password",
+    "database": "my_mysql_database"
+  },
+  "dir": {
+    "pictures": "saved_pictures_location",
+    "tmp": "temporary_pictures_folder"
+  },
+  "azure": {
+    "key": "azure_key",
+    "endpoint": "azure_face_endpoint"
+  },
+  "upload_processing": {
+    "age_multiplier": 0.8,
+    "face_area": 0.35,
+    "size": 750
+  },
+  "age_deviation": 1.065
+}
