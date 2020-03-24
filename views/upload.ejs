@@ -5,21 +5,25 @@
       <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="/stylesheets/main/mobileportrait.css">
       <link rel="stylesheet" type="text/css" media="screen and (min-width: 451px) and (max-width:812px)" href="/stylesheets/main/mobilelandscape.css">
       <link rel="stylesheet" type="text/css" media="screen and (min-width: 813px)" href="/stylesheets/main/desktop.css">
+      <link rel="stylesheet" type="text/css" media="screen and (min-width: 813px)" href="/stylesheets/ball-atom.min.css">
       <script src="/javascripts/uploading.js"></script>
   </head>
   <body>
     <center>
-      <div class="pagecenter">
+      <div id="dialog" class="pagecenter">
         <h1>Ready to upload?</h1>
         <p class="subtitle">Now you can upload a picture of yourself, then you can see how other people rate you!</p>
         <form id="upload_form" action="/u" method="POST" enctype="multipart/form-data">
           <label id="upload_label" for="upload" class="button-important" style="margin: 0pt">Upload</label>
           <input id="upload" name="i" type="file"></input>
           <div id="submit_group" style="display: none">
-            <input id="submit" type="submit" class="button-important" value="Submit" style="margin: 0pt"></input>
+            <input id="submit" type="submit" class="button-important" value="Submit" onclick="showSpinner()" style="margin: 0pt"></input>
           </div>
           <p id="message" style="color: var(--lead2)"><%= typeof msg != 'undefined' ? msg : '' %></p>
         </form>
+      </div>
+      <div class="pagecenter">
+        <div id="spinner" style="display: none;" class="la-ball-atom la-3x"><div></div><div>::before</div>::before0<div></div><div></div></div>
       </div>
     </center>
   </body>

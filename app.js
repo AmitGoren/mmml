@@ -6,9 +6,10 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var voteRouter = require('./routes/vote');
-var preferRouter = require('./routes/prefer');
 var uploadRouter = require('./routes/upload');
-var uploadingRouter = require('./routes/uploading.js');
+var aboutRouter = require('./routes/about');
+var preferRouter = require('./routes/prefer');
+var uploadingRouter = require('./routes/uploading');
 
 var config = require('./config.json');
 
@@ -28,6 +29,7 @@ app.use('/i/', express.static(config.dir.pictures));
 app.use('/', indexRouter);
 app.use('/vote/', voteRouter);
 app.use('/upload/', uploadRouter);
+app.use('/about/', aboutRouter);
 app.use('/p/', preferRouter);
 app.use('/u/', uploadingRouter);
 

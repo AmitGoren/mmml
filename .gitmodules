@@ -1,0 +1,3 @@
+[submodule "load-awesome"]
+	path = load-awesome
+	url = https://github.com/danielcardoso/load-awesome.git

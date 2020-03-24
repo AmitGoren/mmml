@@ -1,7 +1,5 @@
 const queryString = window.location.search;
 
-onload = function() {
-  function vote(preference) {
-    window.location.replace("/prefer"+ queryString + "&preference=" + preference);
-  }
+function vote(preference) {
+  window.location.replace("/p"+ queryString + "&preference=" + preference);
 }

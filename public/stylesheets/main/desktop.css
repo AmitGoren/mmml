@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@200,300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
 @viewport {
   width: device-width ;
   zoom: 1.0 ;
 }
 
 :root {
-  --black: #1A1A1D;
+  --black: #17171A;
   --gray: #4E4E50;
   --dim: #6F2232;
   --lead1: #950740;
@@ -25,7 +25,9 @@ body {
 
 header.page {
   padding: 82pt;
+}
 
+header.page.compose {
   height: 100vh;
   padding-top: 0;
   padding-bottom: 0;
@@ -47,13 +49,13 @@ div.pagecenter.half {
 }
 
 div.pagebottom {
-  padding-top: 36vh;
+  padding-top: 20%;
 }
 
 h1 {
   margin: 10pt;
   font-size: 48pt;
-  font-weight: 200;
+  font-weight: 300;
 
   color: var(--white);
 }
@@ -67,10 +69,6 @@ h2 {
 
 a {
   color: var(--lead2);
-}
-
-p.smalltext {
-
 }
 
 p.subtitle {
@@ -117,6 +115,34 @@ input[type="file"] {
     display: none;
 }
 
+img.picture {
+  max-height: 60vh;
+  max-width: 100vh;
+  width: auto;
+  height: auto;
+
+  border-radius: 2pt;
+}
+
+img.c_picture {
+  max-height: 40vh;
+  max-width: 40vh;
+  width: auto;
+  height: auto;
+
+  border-radius: 2pt;
+
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
 img.icon {
   width: 3vh;
+}
+
+span.preference_char {
+  color: var(--white);
+  font-size: 128pt;
+  margin: 4vh;
+  font-weight: 300;
 }

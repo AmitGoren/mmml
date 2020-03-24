@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mirror Mirror ML</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 450px)" href="/stylesheets/main/mobileportrait.css">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width: 451px) and (max-width:812px)" href="/stylesheets/main/mobilelandscape.css">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width: 813px)" href="/stylesheets/main/desktop.css">
+  </head>
+  <body>
+    <center>
+      <header class="page">
+        <h1>Picture <%= id %></h1><br>
+        <img class="picture" src="/i/<%= filename %>"></img>
+
+        <h2>Votes</h2>
+        <table>
+          <% for (var i = 0; i < votes.length; i++) { %>
+            <tr>
+            <th><img style="float:right" class="c_picture" src="/i/<%= votes[i].f_0 %>"></img></th>
+            <% if (votes[i].preference == 1) { %>
+              <th><span class="preference_char">></span></th>
+            <% } else if (votes[i].preference == 2){ %>
+              <th><span class="preference_char"><</span></th>
+            <% } %>
+            <th><img style="float:left" class="c_picture" src="/i/<%= votes[i].f_1 %>"></img></th>
+            </tr>
+          <% } %>
+        </table>
+      </header>
+    </center>
+  </body>
+</html>

@@ -14,7 +14,6 @@
     "endpoint": "azure_face_endpoint"
   },
   "upload_processing": {
-    "age_multiplier": 0.8,
     "face_area": 0.35,
     "size": 750
   },

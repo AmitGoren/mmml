@@ -56,14 +56,12 @@ function processImage(path) {
           break;
         }
 
-        fp.age = res.data[0].faceAttributes.age * config.upload_processing.age_multiplier;
+        fp.age = res.data[0].faceAttributes.age;
 
         fp.rect = res.data[0].faceRectangle;
 
         // Crop and resize the image
         var img = sharp(path);
-        console.log(1);
-        // .then((img) => {
           // Calculate where to crop the picture
           const croppedSize = Math.sqrt(fp.rect.width * fp.rect.height) / config.upload_processing.face_area;
 
@@ -74,7 +72,6 @@ function processImage(path) {
           img.metadata().then((m) => {
             cropRect.width = Math.floor(Math.min(croppedSize, m.width - cropRect.left));
             cropRect.height = Math.floor(Math.min(croppedSize, m.height - cropRect.top));
-            console.log(cropRect);
 
             // Crop and write the picture
             img
@@ -87,18 +84,21 @@ function processImage(path) {
                 Math.floor(config.upload_processing.size))
                 .toFile(config.dir.pictures + filename + ".jpg", (err) => { if (err) reject(err) });
 
-                // Insert the data about the picture to the database
-                const q = `INSERT INTO pictures (filename, age, sex, public) VALUES ("${filename}.jpg", ${Math.floor(fp.age)}, ${fp.sex}, true)`;
-                console.log(q);
-                con.query(q, (err, res) => {
-                  console.log(4);
-                  if(err)
+            // Insert the data about the picture to the database
+            const q = `INSERT INTO pictures (filename, age, sex, public) VALUES ("${filename}.jpg", ${Math.floor(fp.age)}, ${fp.sex}, true)`;
+            con.query(q, (err, res) => {
+              if (err)
+                reject(err);
+
+              con.query("SELECT LAST_INSERT_ID()", (err_id, res_id) => {
+                if (err)
                   reject(err);
 
-                  resolve();
-                });
-                console.log(5);
-              }).catch((err) => reject(err));
+                resolve(Object.values(res_id[0])[0]);
+              });
+            });
+
+          }).catch((err) => reject(err));
       }
     });
   });
@@ -107,7 +107,6 @@ function processImage(path) {
 const storage = multer.diskStorage({
   destination: config.dir.tmp,
   filename: function(req, file, cb) {
-    //var filename = crypto.randomBytes(3).toString("base64").substring(0, 3); // Generate a random filename, the file will be renamed
     cb(null, Date.now() + "_" + file.originalname);
   }
 });
@@ -128,7 +127,10 @@ router.post('/', upload, (req, res, next) => {
     if (err)
       res.render('upload', { msg: "Error: " + err.message });
     else {
-      processImage(req.file.path).then(() => res.send("uploaded")).catch((err) => res.send(err));
+      processImage(req.file.path)
+        .then((id) =>
+          res.redirect(`/about/${id}`))
+        .catch((err) => res.send(err));
     }
   });
 });

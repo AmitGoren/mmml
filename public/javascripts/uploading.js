@@ -1,3 +1,12 @@
+function showSpinner() {
+  var dialog = document.getElementById('dialog');
+  var spinner = document.getElementById('spinner');
+
+  dialog.style.display = 'none';
+  spinner.style.display = 'inline-block';
+}
+
+
 onload = function() {
   var upload = document.getElementById('upload');
   var upload_label = document.getElementById('upload_label');
